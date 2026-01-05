@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDSys | Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+
+       body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: rgb(234, 234, 234);
+    }
+
+    .headTab{
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 8px;
+        background-color: rgb(249, 249, 249);
+        border: 1px solid rgb(230, 228, 240);
+        box-shadow: 10px 12px 10px rgb(169, 169, 169);
+        border-radius: 20px;
+
+    }
+    .circle {
+        border: 1px solid black;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    main {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+        height: calc(100vh - 130px);
+    }
+
+    aside {
+        flex-basis: 20%;
+    }
+
+    .tabs {
+        height: 30%;
+        background-color: rgb(249, 249, 249);
+        border: 1px solid rgb(230, 228, 240);
+        box-shadow: 10px 12px 10px rgb(169, 169, 169);
+        border-radius: 20px; 
+        padding: 20px; 
+    }
+
+    .tab {
+        overflow:hidden;
+        border: none;
+        text-align: center;
+        border-radius: 10px;
+        padding: 5px 50px;
+        margin: 5px 0px;
+        transition: all 1s;
+        height: 20px;
+    }
+
+    .tab:hover {
+        border: 1px solid rgb(255, 255, 255);
+        box-shadow: -5px 0px 1px rgb(169, 169, 169);
+        transform: translateX(5px);
+    }
+
+    .parceltabs {
+        flex-basis: 80%;
+        background-color: rgb(249, 249, 249);
+        border: 1px solid rgb(230, 228, 240);
+        box-shadow: 10px 12px 10px rgb(169, 169, 169);
+        border-radius: 20px;    
+    }
+    
+</style>
+<body>
+    <header>
+        <div class="headTab">
+            <p>David Default</p>
+            <div class="circle">
+                 <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+    <aside>
+        <div class="tabs">
+            <p class="tab"><i class="fa-solid fa-truck"></i> Parcels</p>
+            <p class="tab"><i class="fa-regular fa-id-card"></i> Drivers</p>
+        </div>
+    </aside>
+
+    <div class="parceltabs">
+
+    </div>
+    </main>
+   
+</body>
+</html>
