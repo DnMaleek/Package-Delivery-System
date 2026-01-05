@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDSys | Add-Driver</title>
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: rgb(234, 234, 234);
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 80%;
+    }
+    .container form {
+        padding: 40px 30px;
+        padding-right: 50px;
+        background: rgb(249, 249, 249);
+        border-radius: 20px;
+        box-shadow: 10px 12px 10px rgb(169, 169, 169);
+        border: 1px solid rgb(230, 228, 240);
+        width: 400px;
+    }
+    .inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .inputs label {
+        margin-bottom: 5px;
+        color: rgb(95, 95, 95);
+    }
+    input {
+        height: 40px;
+        padding-inline: 8px;
+        font-size: 15px;
+        border-radius: 16px;
+        border:2px solid rgb(236, 236, 236);
+        outline-color: rgb(70, 157, 207);
+        color: rgb(95, 95, 95);
+    }
+    .inp {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .inp input {
+        width: 100%;
+    }
+    .part1 {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .part1 .inputs1 {
+        display: flex;
+        gap: 5px;
+    }
+    .submit {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    .submit button {
+        padding: 10px 30px;
+        width: 40%;
+        border: 2px solid rgb(233, 233, 233);
+        color: white;
+        background-color: rgb(79, 79, 133);
+        border-radius: 20px;
+    }
+    h4, h5 {
+        margin-bottom: 10px;
+        color: rgb(57, 140, 189);
+    }
+</style>
+<body>
+        <div class="container">
+        <form action="/src/logics/add_driver.php" method="POST">
+            <h2>Register Driver Here</h2>
+            <div class="part">
+                <h4>Driver Details</h4>
+                <div class="inputs">
+                    <div class="inp">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" name="fullname" placeholder="eg. John Doe">
+                    </div>
+                    <div class="inp">
+                        <label for="phone">Phone Number</label>
+                        <input type="text" name="phone" placeholder="eg. +255 750 000 000">
+                    </div>
+                </div>
+            </div>
+
+            <div class="part1">
+                <h5>Transport Information</h5>
+                <div class="inputs1">
+                    <input type="text" name="company" placeholder="Company">
+                    <input type="text" name="route" placeholder="Route">
+                </div>
+            </div>
+            
+            <div class="submit">
+                <button type="submit">Add Driver</button>
+            </div>       
+        </form>
+    </div>
+</body>
+</html>

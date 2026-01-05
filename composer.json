@@ -1,0 +1,7 @@
+{
+    "name": "neezar/delivery-system",
+    "type": "project",
+    "require": {
+        "vlucas/phpdotenv": "*"
+    }
+}
