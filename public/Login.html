@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDSys | LogIn</title>
+</head>
+<style>
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(234, 234, 234);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* ===== CARD CONTAINER ===== */
+.usrform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+
+    background-color: rgb(249, 249, 249);
+    border: 1px solid rgb(230, 228, 240);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+    padding: 40px 35px;
+    border-radius: 16px;
+
+    width: 100%;
+    max-width: 400px;
+}
+
+/* ===== TITLE ===== */
+.usrform h2 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* ===== FORM ===== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+/* ===== INPUTS ===== */
+input {
+    height: 48px;
+    width: 100%;
+    font-size: 15px;
+
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 12px;
+    padding-left: 16px;
+
+    outline-color: rgb(70, 157, 207);
+}
+
+/* ===== BUTTON ===== */
+button {
+    height: 45px;
+    border-radius: 12px;
+    border: none;
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+</style>
+<body>
+    <div class="usrform">
+        <h2>Hey ! Welcome Back</h2>
+        <form id="usrform" action="">
+            <input type="text" name="" id="userId" placeholder="A-Loc-0001">
+            <input type="password" name="" id="password" placeholder="Password">
+            <button type="submit">Log In</button>
+        </form>
+    </div>
+<script>
+    document.getElementById('usrform').addEventListener('submit',async (e)=>{
+        e.preventDefault();
+
+        const userId=document.getElementById("userId").value.trim();
+        const password=document.getElementById("password").value.trim();
+
+        const formdata=await fetch("../src/logics/index.php",{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({userId,password})
+        });
+
+        const data = await formdata.json();
+        console.log(data);
+    });
+    
+</script>
+
+</body>
+</html>

@@ -3,69 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDSys | LogIn</title>
+    <title>PDSys</title>
 </head>
 <style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: rgb(234, 234, 234);
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .usrform {
-        display: flex;
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* ===== HEADER ===== */
+header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 60px;
+}
+
+header p {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* ===== MAIN SECTION ===== */
+main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px;
+    gap: 60px;
+    min-height: 80vh;
+}
+
+/* LEFT CONTENT */
+.content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.content h2 {
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+.content p {
+    margin-bottom: 25px;
+}
+
+.content button {
+    padding: 10px 25px;
+    font-size: 16px;
+}
+
+/* RIGHT IMAGE */
+.Showimage {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.Showimage img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    margin-top: 60px;
+}
+
+.followus {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.followus img {
+    width: 24px;
+    height: 24px;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 900px) {
+    main {
         flex-direction: column;
         text-align: center;
-        justify-content: center;
-        align-items: center;
-        background-color: rgb(249, 249, 249);
-        border: 1px solid rgb(230, 228, 240);
-        box-shadow: 10px 12px 10px rgb(169, 169, 169);
-        padding: 30px;
-        border-radius: 20px;
-        width: 30%;
-        height: 40%;
     }
 
-    form {
-        display: flex;
+    .content {
+        max-width: 100%;
+    }
+
+    .Showimage img {
+        max-width: 350px;
+    }
+
+    footer {
         flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        width: 80%;
+        gap: 15px;
+        text-align: center;
     }
-
-    input {
-        height: 50px;
-        width: 90%;
-        font-size: 15px;
-        outline-color: rgb(70, 157, 207);
-        border: 1px solid rgb(207, 207, 207);
-        border-radius: 20px;
-        padding-inline-start: 20px;
-    }
-
-    button {
-        width: 60%;
-        border-radius: 20px;
-        border: none;
-        background-color: rgb(79, 79, 133);
-        color: white;
-        height: 40px;
-        margin-top: 5px;
-    }
+}
 
 </style>
 <body>
-    <div class="usrform">
-        <h2>Hey ! Welcome Back</h2>
-        <form action="">
-            <input type="text" name="" id="" placeholder="A-Loc-0001">
-            <input type="password" name="" id="" placeholder="Password">
-            <button type="submit">Log In</button>
-        </form>
-    </div>
+    <header>
+        <img src="logo.svg" alt="Logo" width="50" height="50">
+        <p>TRANSEND</p>
+    </header>
+    <main>
+        <div class="content">
+             <h2>Delivering Trust Everywhere</h2>
+             <p>Whether you're sending small packages like phones,
+             clothing, or important documents, our network ensures
+              your items move safely and efficiently from pickup to 
+              destination.With real-time tracking, professional handling, 
+              and a customer-first approach, we make regional delivery simple, 
+              transparent, and dependable.Your parcel is more than just a package
+               — it’s a promise we deliver on every time.
+            </p>
+            <button>LogIn</button>
+        </div>
+
+        <div class="Showimage">
+            <img src="showimage.jpg" alt="Logo">
+            
+
+        </div>
+       
+    </main>
+    <footer>
+        <p>Transend ©All rights reserved.</p>
+        <div class="followus">
+             <p>Follow Us on</p>
+                <img src="noun-facebook-6719933.svg" alt="Logo">
+                <img src="noun-instagram-8122979.svg" alt="Logo">
+                <img src="noun-tiktok-3861486.svg" alt="Logo">
+
+        </div>
+    </footer>
 </body>
 </html>

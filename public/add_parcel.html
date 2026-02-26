@@ -7,92 +7,128 @@
     <title>PDSys | Add-Parcel</title>
 </head>
 <style>
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: rgb(234, 234, 234);
-    }
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 80%;
-    }
-    .container form {
-        padding: 40px 30px;
-        background: rgb(249, 249, 249);
-        border-radius: 20px;
-        box-shadow: 10px 12px 10px rgb(169, 169, 169);
-        border: 1px solid rgb(230, 228, 240);
-    }
-    .part {
-        display: flex;
-        flex-direction: column;
-    }
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: rgb(234, 234, 234);
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 20px;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    width: 100%;
+    max-width: 750px;
+}
+
+/* ===== FORM CARD ===== */
+form {
+    background: rgb(249, 249, 249);
+    border-radius: 16px;
+    border: 1px solid rgb(230, 228, 240);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* ===== SECTION STRUCTURE ===== */
+.part {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.part > p {
+    font-weight: 500;
+}
+
+/* ===== INPUT ROWS ===== */
+.inputs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* ===== INPUT STYLE ===== */
+input {
+    width: 100%;
+    height: 42px;
+    padding: 0 12px;
+    font-size: 14px;
+
+    border-radius: 10px;
+    border: 1px solid rgb(236, 236, 236);
+    outline-color: rgb(70, 157, 207);
+}
+
+/* ===== DESCRIPTION SECTION ===== */
+.desc {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-field {
+    height: 180px;
+    border: 2px dashed rgb(200, 200, 200);
+    border-radius: 16px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input-field i {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.desc textarea {
+    resize: none;
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    font-size: 14px;
+    font-family: inherit;
+
+    border-radius: 10px;
+    border: 1px solid rgb(236, 236, 236);
+    outline-color: rgb(70, 157, 207);
+}
+
+/* ===== BUTTON ===== */
+.submit {
+    display: flex;
+    justify-content: center;
+}
+
+.submit button {
+    padding: 10px 35px;
+    min-width: 180px;
+    border-radius: 10px;
+    border: 1px solid rgb(233, 233, 233);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 650px) {
     .inputs {
-        display: flex;
-        gap: 30px;
+        grid-template-columns: 1fr;
     }
-    input {
-        width: 200px;
-        height: 40px;
-        padding-inline: 8px;
-        font-size: 15px;
-        border-radius: 16px;
-        border:2px solid rgb(236, 236, 236);
-        outline-color: rgb(70, 157, 207);
-        color: rgb(95, 95, 95);
-    }
-    .desc {
-        display: flex;
-        flex-direction: column;
-        max-width: 465px;
-    }
-    .desc textarea {
-        resize: none;
-        width: 96%;
-        border: 2px solid rgb(236, 236, 236);
-        margin-top: 20px;
-        font-size: 15px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        padding-inline: 10px;
-        outline-color: rgb(70, 157, 207);
-        border-radius: 8px;
-        margin-bottom: 10px;
-        color: rgb(95, 95, 95);
-    }
-    .submit {
-        display: flex;
-        justify-content: center;
-        margin-top: 5px;
-    }
-    .submit button {
-        padding: 10px 30px;
-        width: 40%;
-        border: 2px solid rgb(233, 233, 233);
-        color: white;
-        background-color: rgb(79, 79, 133);
-        border-radius: 20px;
-    }
-    .input-field {
-        height: 200px;
-        border: 2px dashed rgb(200, 200, 200);
-        border-radius: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        color: rgb(150, 150, 150);
-    }
-    .input-field i {
-        font-size: 50px;
-        margin-bottom: 10px;
-        color: rgb(70, 157, 207);
-    }
+}
 </style>
 <body>
     <div class="container">

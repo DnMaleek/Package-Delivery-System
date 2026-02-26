@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDSys | Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: rgb(234, 234, 234);
+    min-height: 100vh;
+    padding: 20px 40px;
+}
+
+/* ===== HEADER ===== */
+header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.headTab {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 10px 20px;
+    width: 100%;
+    background-color: rgb(249, 249, 249);
+    border: 1px solid rgb(230, 228, 240);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+}
+
+.circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid black;
+}
+
+/* ===== MAIN LAYOUT ===== */
+main {
+    display: flex;
+    gap: 25px;
+    min-height: calc(100vh - 140px);
+}
+
+/* ===== SIDEBAR ===== */
+aside {
+    width: 240px;
+}
+
+.tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 20px;
+
+    background-color: rgb(249, 249, 249);
+    border: 1px solid rgb(230, 228, 240);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+
+    height: 100%;
+}
+
+/* ===== TABS ===== */
+.tab {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tab:hover {
+    transform: translateX(6px);
+    box-shadow: -4px 0px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== MAIN CONTENT ===== */
+.parceltabs {
+    flex: 1;
+    padding: 25px;
+
+    background-color: rgb(249, 249, 249);
+    border: 1px solid rgb(230, 228, 240);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+}
+
+</style>
+<body>
+    <header>
+        <div class="headTab">
+            <p>David Default</p>
+            <div class="circle">
+                 <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+    <aside>
+        <div class="tabs">
+            <p class="tab"><i class="fa-solid fa-truck"></i> Parcels</p>
+            <p class="tab"><i class="fa-regular fa-id-card"></i> Drivers</p>
+        </div>
+    </aside>
+
+    <div class="parceltabs">
+
+    </div>
+    </main>
+   
+</body>
+</html>
