@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>PDSys</title>
 </head>
 <style>
@@ -26,6 +27,7 @@ header {
 }
 
 header p {
+    color: #fe8802;
     font-weight: bold;
     font-size: 18px;
 }
@@ -47,6 +49,7 @@ main {
 }
 
 .content h2 {
+    color: #fe8802;
     margin-bottom: 20px;
     font-size: 32px;
 }
@@ -56,8 +59,20 @@ main {
 }
 
 .content button {
-    padding: 10px 25px;
+    background-color: #fe8802;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    padding: 15px 40px;
     font-size: 16px;
+    font-weight: bold;
+    transition: transform .3s ease;
+}
+
+.content button:hover{
+    font-weight: bold;
+    background-color: #000000;
+    transform: scale(1.03);
 }
 
 /* RIGHT IMAGE */
@@ -85,11 +100,6 @@ footer {
     display: flex;
     align-items: center;
     gap: 15px;
-}
-
-.followus img {
-    width: 24px;
-    height: 24px;
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
@@ -131,7 +141,7 @@ footer {
               transparent, and dependable.Your parcel is more than just a package
                — it’s a promise we deliver on every time.
             </p>
-            <button>LogIn</button>
+           <a href="Login.html"><button>LogIn</button></a>
         </div>
 
         <div class="Showimage">
@@ -145,9 +155,9 @@ footer {
         <p>Transend ©All rights reserved.</p>
         <div class="followus">
              <p>Follow Us on</p>
-                <img src="noun-facebook-6719933.svg" alt="Logo">
-                <img src="noun-instagram-8122979.svg" alt="Logo">
-                <img src="noun-tiktok-3861486.svg" alt="Logo">
+                <i class="fa-brands fa-facebook-f"></i>                
+                <i class="fa-brands fa-square-instagram"></i>
+                <i class="fa-brands fa-tiktok"></i>
 
         </div>
     </footer>

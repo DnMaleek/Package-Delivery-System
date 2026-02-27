@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>PDSys | LogIn</title>
 </head>
 <style>
@@ -12,14 +13,39 @@
     box-sizing: border-box;
 }
 
+/* ===== PAGE LAYOUT FRAME ===== */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: rgb(234, 234, 234);
+
     min-height: 100vh;
+
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* header / main / footer */
+}
+
+/* ===== HEADER ===== */
+header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 20px 60px;
+}
+
+header p {
+    color: #fe8802;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* ===== MAIN CENTERING ===== */
+main {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+
+    padding: 40px 20px;
 }
 
 /* ===== CARD CONTAINER ===== */
@@ -29,15 +55,11 @@ body {
     align-items: center;
     gap: 25px;
 
-    background-color: rgb(249, 249, 249);
-    border: 1px solid rgb(230, 228, 240);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-
-    padding: 40px 35px;
+    padding: 45px 40px;
     border-radius: 16px;
 
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
 }
 
 /* ===== TITLE ===== */
@@ -50,7 +72,7 @@ body {
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 18px;
     width: 100%;
 }
 
@@ -69,6 +91,10 @@ input {
 
 /* ===== BUTTON ===== */
 button {
+    background-color: #fe8802;
+    border-radius: 10px;
+    color: white;
+    border: none;
     height: 45px;
     border-radius: 12px;
     border: none;
@@ -76,16 +102,55 @@ button {
     font-size: 15px;
 }
 
+button:hover{
+    background-color: #000000;
+    transform: scale(1.03);
+}
+
+/* ===== FOOTER STICK TO BOTTOM ===== */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 60px;
+}
+
+.followus {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
 </style>
 <body>
+      <header>
+        <img src="logo.svg" alt="Logo" width="50" height="50">
+        <p>TRANSEND</p>
+    </header>
+
+    <main>
     <div class="usrform">
         <h2>Hey ! Welcome Back</h2>
         <form id="usrform" action="">
             <input type="text" name="" id="userId" placeholder="A-Loc-0001">
             <input type="password" name="" id="password" placeholder="Password">
-            <button type="submit">Log In</button>
+            <button type="submit">LogIn</button>
         </form>
     </div>
+    </main>
+
+    <footer>
+        <p>Transend ©All rights reserved.</p>
+        <div class="followus">
+             <p>Follow Us on</p>
+                <i class="fa-brands fa-facebook-f"></i>                
+                <i class="fa-brands fa-square-instagram"></i>
+                <i class="fa-brands fa-tiktok"></i>
+
+        </div>
+    </footer>
+
 <script>
     document.getElementById('usrform').addEventListener('submit',async (e)=>{
         e.preventDefault();
