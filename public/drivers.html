@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDSys | Drivers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link rel="stylesheet" href="../styles//driver.css">
+</head>
+<body>
+    <header>
+        <div class="headTab">
+            <div class="headTab-left"><h2>Drivers</h2><span>Manage all registered drivers</span></div>
+            <div class="headTab-right">
+                <div class="notif-btn"><i class="fa-regular fa-bell"></i><div class="notif-dot"></div></div>
+                <p>David Default</p>
+                <div class="circle"><i class="fa-solid fa-user"></i></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <aside>
+            <div class="tabs">
+                <div class="sidebar-logo">
+                    <div class="logo-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                    <div><h3>PDSys</h3><p>Admin Panel</p></div>
+                </div>
+                <span class="nav-label">Main</span>
+                <a href="/admin/dashboard" class="tab"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+                <a href="/admin/parcels" class="tab"><i class="fa-solid fa-box"></i> Parcels </a>
+                <a href="/admin/drivers" class="tab active"><i class="fa-solid fa-id-card"></i> Drivers</a>
+                <a href="dispatch.html" class="tab"><i class="fa-solid fa-map-location-dot"></i> Dispatch</a>
+                <span class="nav-label">Reports</span>
+                <a href="analytics.html" class="tab"><i class="fa-solid fa-chart-bar"></i> Analytics</a>
+                <a href="alerts.html" class="tab"><i class="fa-solid fa-bell"></i> Alerts <span class="tab-badge">2</span></a>
+                <span class="nav-label">System</span>
+                <a href="staff.html" class="tab"><i class="fa-solid fa-users"></i> Staff</a>
+            </div>
+        </aside>
+
+        <div class="content">
+            <!-- STATS STRIP -->
+            <div class="stats-strip">
+                <div class="stat-mini">
+                    <div class="stat-mini-icon" style="background:#eef2ff"><i class="fa-solid fa-users" style="color:#4f46e5"></i></div>
+                    <div><div class="stat-mini-val">8</div><div class="stat-mini-label">Total Drivers</div></div>
+                </div>
+                <div class="stat-mini">
+                    <div class="stat-mini-icon" style="background:#d1e7dd"><i class="fa-solid fa-circle-check" style="color:#16a34a"></i></div>
+                    <div><div class="stat-mini-val">3</div><div class="stat-mini-label">Available</div></div>
+                </div>
+                <div class="stat-mini">
+                    <div class="stat-mini-icon" style="background:#cff4fc"><i class="fa-solid fa-truck" style="color:#0891b2"></i></div>
+                    <div><div class="stat-mini-val">4</div><div class="stat-mini-label">On Duty</div></div>
+                </div>
+                <div class="stat-mini">
+                    <div class="stat-mini-icon" style="background:#f5f5f5"><i class="fa-solid fa-circle-minus" style="color:#999"></i></div>
+                    <div><div class="stat-mini-val">1</div><div class="stat-mini-label">Inactive</div></div>
+                </div>
+            </div>
+
+            <!-- DRIVERS CARD -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fa-solid fa-id-card" style="color:#4f46e5;margin-right:8px"></i>All Drivers</span>
+                    <div class="header-actions">
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass" style="color:#aaa;font-size:13px"></i>
+                            <input type="text" placeholder="Search driver name..."/>
+                        </div>
+                        <button class="btn btn-primary" onclick="openModal()"><i class="fa-solid fa-plus"></i> Add Driver</button>
+                    </div>
+                </div>
+                <div class="drivers-grid">
+                    <div class="driver-card">
+                        <div class="dc-header">
+                            <div class="dc-avatar" style="background:#2c3e50">J</div>
+                            <div>
+                                <div class="dc-name">Juan Dela Cruz</div>
+                                <div class="dc-vehicle"><i class="fa-solid fa-car fa-xs"></i> ABC-1234</div>
+                            </div>
+                            <span class="dc-parcels">3 parcels</span>
+                        </div>
+                        <div class="dc-status onduty"><i class="fa-solid fa-circle fa-xs"></i> On Duty</div>
+                        <div class="dc-info">
+                            <div class="dc-info-row"><i class="fa-solid fa-phone"></i> 09171234567</div>
+                            <div class="dc-info-row"><i class="fa-solid fa-map-marker-alt"></i> startLoc - destinationLocation</div>
+                        </div>
+                        <div class="dc-actions">
+                            <button class="btn-sm">View</button>
+                            <button class="btn-sm">Edit</button>
+                            <button class="btn-sm danger">Remove</button>
+                        </div>
+                    </div>
+                    <div class="driver-card">
+                        <div class="dc-header">
+                            <div class="dc-avatar" style="background:#16a34a">C</div>
+                            <div>
+                                <div class="dc-name">Carlo Mendoza</div>
+                                <div class="dc-vehicle"><i class="fa-solid fa-car fa-xs"></i> XYZ-5678</div>
+                            </div>
+                            <span class="dc-parcels" style="background:#d1e7dd;color:#0a3622">0 parcels</span>
+                        </div>
+                        <div class="dc-status available"><i class="fa-solid fa-circle fa-xs"></i> Available</div>
+                        <div class="dc-info">
+                            <div class="dc-info-row"><i class="fa-solid fa-phone"></i> 09189876543</div>
+                            <div class="dc-info-row"><i class="fa-solid fa-map-marker-alt"></i> South Region</div>
+                        </div>
+                        <div class="dc-actions">
+                            <button class="btn-sm">View</button>
+                            <button class="btn-sm">Edit</button>
+                            <button class="btn-sm danger">Remove</button>
+                        </div>
+                    </div>
+                    <div class="driver-card">
+                        <div class="dc-header">
+                            <div class="dc-avatar" style="background:#7c3aed">R</div>
+                            <div>
+                                <div class="dc-name">Rico Bautista</div>
+                                <div class="dc-vehicle"><i class="fa-solid fa-car fa-xs"></i> DEF-9012</div>
+                            </div>
+                            <span class="dc-parcels">5 parcels</span>
+                        </div>
+                        <div class="dc-status onduty"><i class="fa-solid fa-circle fa-xs"></i> On Duty</div>
+                        <div class="dc-info">
+                            <div class="dc-info-row"><i class="fa-solid fa-phone"></i> 09203456789</div>
+                            <div class="dc-info-row"><i class="fa-solid fa-map-marker-alt"></i> East Region</div>
+                        </div>
+                        <div class="dc-actions">
+                            <button class="btn-sm">View</button>
+                            <button class="btn-sm">Edit</button>
+                            <button class="btn-sm danger">Remove</button>
+                        </div>
+                    </div>
+                    <div class="driver-card">
+                        <div class="dc-header">
+                            <div class="dc-avatar" style="background:#e67e22">M</div>
+                            <div>
+                                <div class="dc-name">Marlo Tan</div>
+                                <div class="dc-vehicle"><i class="fa-solid fa-car fa-xs"></i> GHI-3456</div>
+                            </div>
+                            <span class="dc-parcels" style="background:#d1e7dd;color:#0a3622">0 parcels</span>
+                        </div>
+                        <div class="dc-status available"><i class="fa-solid fa-circle fa-xs"></i> Available</div>
+                        <div class="dc-info">
+                            <div class="dc-info-row"><i class="fa-solid fa-phone"></i> 09256789012</div>
+                            <div class="dc-info-row"><i class="fa-solid fa-map-marker-alt"></i> West Region</div>
+                        </div>
+                        <div class="dc-actions">
+                            <button class="btn-sm">View</button>
+                            <button class="btn-sm">Edit</button>
+                            <button class="btn-sm danger">Remove</button>
+                        </div>
+                    </div>
+                    <div class="driver-card">
+                        <div class="dc-header">
+                            <div class="dc-avatar" style="background:#aaa">P</div>
+                            <div>
+                                <div class="dc-name">Pedro Santos</div>
+                                <div class="dc-vehicle"><i class="fa-solid fa-car fa-xs"></i> JKL-7890</div>
+                            </div>
+                            <span class="dc-parcels" style="background:#f5f5f5;color:#888">0 parcels</span>
+                        </div>
+                        <div class="dc-status inactive"><i class="fa-solid fa-circle fa-xs"></i> Inactive</div>
+                        <div class="dc-info">
+                            <div class="dc-info-row"><i class="fa-solid fa-phone"></i> 09271234567</div>
+                            <div class="dc-info-row"><i class="fa-solid fa-map-marker-alt"></i> Central Region</div>
+                        </div>
+                        <div class="dc-actions">
+                            <button class="btn-sm">Activate</button>
+                            <button class="btn-sm">Edit</button>
+                            <button class="btn-sm danger">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ADD DRIVER MODAL -->
+    <div class="modal-overlay" id="driverModal">
+        <div class="modal">
+            <div class="modal-header">
+                <span class="modal-title"><i class="fa-solid fa-plus" style="color:#4f46e5;margin-right:8px"></i>Add New Driver</span>
+                <button class="modal-close" onclick="closeModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label>Full Name</label>
+                        <input type="text" id="fullName" placeholder="Driver full name"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="text" id="phoneNumber" placeholder="09XXXXXXXXX"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Vehicle Number</label>
+                        <input type="text" id="vehicleNumber" placeholder="ABC-1234"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Company Name</label>
+                        <input type="text" id="companyName" placeholder="Private/Dn Luxury">
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select id="status">
+                            <option value="Available">Available</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+                    </div>
+                     <div class="form-group">
+                        <label>Start Location</label>
+                        <input type="text" id="startLocation" placeholder="Region">
+                    </div>
+                    <div class="form-group">
+                        <label>Destination Location</label>
+                        <input type="text" id="destinationLocation" placeholder="Region">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="addDriver()"><i class="fa-solid fa-plus"></i> Add Driver</button>
+            </div>
+        </div>
+    </div>
+
+<!-- VIEW DRIVER MODAL -->
+<div class="modal-overlay" id="viewDriverModal">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="modal-title"><i class="fa-solid fa-id-card" style="color:#4f46e5;margin-right:8px"></i>Driver Details</span>
+            <button class="modal-close" onclick="closeViewModal()">✕</button>
+        </div>
+        <div class="modal-body">
+            <div class="view-driver-profile">
+                <div class="view-avatar" id="viewAvatar">J</div>
+                <div>
+                    <div class="view-name" id="viewName">—</div>
+                    <div id="viewStatusBadge" class="dc-status" style="margin-top:6px">—</div>
+                </div>
+            </div>
+            <div class="view-details-grid">
+                <div class="view-detail-item">
+                    <span class="view-detail-label"><i class="fa-solid fa-phone"></i> Phone</span>
+                    <span class="view-detail-value" id="viewPhone">—</span>
+                </div>
+                <div class="view-detail-item">
+                    <span class="view-detail-label"><i class="fa-solid fa-car"></i> Vehicle</span>
+                    <span class="view-detail-value" id="viewVehicle">—</span>
+                </div>
+                <div class="view-detail-item">
+                    <span class="view-detail-label"><i class="fa-solid fa-building"></i> Company</span>
+                    <span class="view-detail-value" id="viewCompany">—</span>
+                </div>
+                <div class="view-detail-item">
+                    <span class="view-detail-label"><i class="fa-solid fa-box"></i> Active Parcels</span>
+                    <span class="view-detail-value" id="viewParcels">—</span>
+                </div>
+                <div class="view-detail-item full">
+                    <span class="view-detail-label"><i class="fa-solid fa-map-marker-alt"></i> Route</span>
+                    <span class="view-detail-value" id="viewRoute">—</span>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-outline" onclick="closeViewModal()">Close</button>
+            <button class="btn btn-primary" onclick="switchToEdit()"><i class="fa-solid fa-pen"></i> Edit Driver</button>
+        </div>
+    </div>
+</div>
+
+<!-- EDIT DRIVER MODAL -->
+<div class="modal-overlay" id="editDriverModal">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="modal-title"><i class="fa-solid fa-pen" style="color:#4f46e5;margin-right:8px"></i>Edit Driver</span>
+            <button class="modal-close" onclick="closeEditModal()">✕</button>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" id="editDriverId"/>
+            <div class="form-grid">
+                <div class="form-group full">
+                    <label>Full Name</label>
+                    <input type="text" id="editFullName" placeholder="Driver full name"/>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="text" id="editPhoneNumber" placeholder="09XXXXXXXXX"/>
+                </div>
+                <div class="form-group">
+                    <label>Vehicle Number</label>
+                    <input type="text" id="editVehicleNumber" placeholder="ABC-1234"/>
+                </div>
+                <div class="form-group">
+                    <label>Company Name</label>
+                    <input type="text" id="editCompanyName" placeholder="Private"/>
+                </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select id="editStatus">
+                        <option value="Available">Available</option>
+                        <option value="On Duty">On Duty</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Start Location</label>
+                    <input type="text" id="editStartLocation" placeholder="Region"/>
+                </div>
+                <div class="form-group">
+                    <label>Destination Location</label>
+                    <input type="text" id="editDestinationLocation" placeholder="Region"/>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-outline" onclick="closeEditModal()">Cancel</button>
+            <button class="btn btn-primary" onclick="saveEditDriver()"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+        </div>
+    </div>
+</div>
+
+<!-- CONFIRM DELETE MODAL -->
+<div class="modal-overlay" id="deleteDriverModal">
+    <div class="modal" style="max-width:400px">
+        <div class="modal-header">
+            <span class="modal-title"><i class="fa-solid fa-triangle-exclamation" style="color:#dc2626;margin-right:8px"></i>Remove Driver</span>
+            <button class="modal-close" onclick="closeDeleteModal()">✕</button>
+        </div>
+        <div class="modal-body">
+            <p style="font-size:14px;color:#555;line-height:1.6">
+                Are you sure you want to remove <strong id="deleteDriverName">this driver</strong>?
+                This action cannot be undone.
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-outline" onclick="closeDeleteModal()">Cancel</button>
+            <button class="btn" style="background:#dc2626;color:white" onclick="confirmDelete()">
+                <i class="fa-solid fa-trash"></i> Yes, Remove
+            </button>
+        </div>
+    </div>
+</div>    
+
+<script>
+    // ─── State ───────────────────────────────────────────────────────────────
+    let allDrivers      = [];
+    let filteredDrivers = [];
+    let currentPage     = 1;
+    const perPage       = 8;
+    let pendingDeleteId = null;
+
+    // ─── Avatar colors ────────────────────────────────────────────────────────
+    const avatarColors = [
+        '#4f46e5','#16a34a','#0891b2','#7c3aed',
+        '#e67e22','#e74c3c','#2c3e50','#d97706'
+    ];
+    function getColor(i) { return avatarColors[i % avatarColors.length]; }
+
+    // ─── ADD DRIVER Modal ─────────────────────────────────────────────────────
+    function openModal()  { document.getElementById('driverModal').classList.add('open'); }
+    function closeModal() { document.getElementById('driverModal').classList.remove('open'); }
+    document.getElementById('driverModal').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
+
+    const addDriver = async () => {
+        const fullName            = document.getElementById("fullName").value.trim();
+        const phoneNumber         = document.getElementById("phoneNumber").value.trim();
+        const vehicleNumber       = document.getElementById("vehicleNumber").value.trim();
+        const companyName         = document.getElementById("companyName").value.trim();
+        const status              = document.getElementById("status").value.trim();
+        const startLocation       = document.getElementById("startLocation").value.trim();
+        const destinationLocation = document.getElementById("destinationLocation").value.trim();
+
+        const response = await fetch("/admin/dashboard/drivers", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ fullName, phoneNumber, vehicleNumber, companyName,
+                                   status, startLocation, destinationLocation })
+        });
+        const data = await response.json();
+        console.log(data);
+        closeModal();
+        loadDrivers();
+    };
+
+    // ─── VIEW Modal ───────────────────────────────────────────────────────────
+    function openViewModal(driver, colorIndex) {
+        const statusClass = driver.status === 'Available' ? 'available'
+                          : driver.status === 'On Duty'   ? 'onduty'
+                          : 'inactive';
+
+        document.getElementById('viewAvatar').textContent          = driver.fullName?.charAt(0).toUpperCase() || '?';
+        document.getElementById('viewAvatar').style.background     = getColor(colorIndex);
+        document.getElementById('viewName').textContent            = driver.fullName       || '—';
+        document.getElementById('viewPhone').textContent           = driver.phoneNumber    || '—';
+        document.getElementById('viewVehicle').textContent         = driver.vehicleNumber  || '—';
+        document.getElementById('viewCompany').textContent         = driver.companyName    || '—';
+        document.getElementById('viewParcels').textContent         = driver.activeParcels != null
+                                                                        ? `${driver.activeParcels} parcel(s)`
+                                                                        : '0 parcel(s)';
+        document.getElementById('viewRoute').textContent           = `${driver.startLocation || '—'} → ${driver.destinationLocation || '—'}`;
+
+        const badge = document.getElementById('viewStatusBadge');
+        badge.className     = `dc-status ${statusClass}`;
+        badge.innerHTML     = `<i class="fa-solid fa-circle fa-xs"></i> ${driver.status}`;
+
+        // Store driver id on modal for "Edit Driver" button
+        document.getElementById('viewDriverModal').dataset.driverId     = driver.id;
+        document.getElementById('viewDriverModal').dataset.colorIndex   = colorIndex;
+
+        document.getElementById('viewDriverModal').classList.add('open');
+    }
+
+    function closeViewModal() {
+        document.getElementById('viewDriverModal').classList.remove('open');
+    }
+    document.getElementById('viewDriverModal').addEventListener('click', function(e) {
+        if (e.target === this) closeViewModal();
+    });
+
+    // Switch from View → Edit without closing
+    function switchToEdit() {
+        const id = document.getElementById('viewDriverModal').dataset.driverId;
+        const driver = allDrivers.find(d => d.id == id);
+        if (driver) { closeViewModal(); openEditModal(driver); }
+    }
+
+    // ─── EDIT Modal ───────────────────────────────────────────────────────────
+    function openEditModal(driver) {
+        document.getElementById('editDriverId').value             = driver.id;
+        document.getElementById('editFullName').value             = driver.fullName            || '';
+        document.getElementById('editPhoneNumber').value          = driver.phoneNumber         || '';
+        document.getElementById('editVehicleNumber').value        = driver.vehicleNumber       || '';
+        document.getElementById('editCompanyName').value          = driver.companyName         || '';
+        document.getElementById('editStatus').value               = driver.status              || 'Available';
+        document.getElementById('editStartLocation').value        = driver.startLocation       || '';
+        document.getElementById('editDestinationLocation').value  = driver.destinationLocation || '';
+
+        document.getElementById('editDriverModal').classList.add('open');
+    }
+
+    function closeEditModal() {
+        document.getElementById('editDriverModal').classList.remove('open');
+    }
+    document.getElementById('editDriverModal').addEventListener('click', function(e) {
+        if (e.target === this) closeEditModal();
+    });
+
+    const saveEditDriver = async () => {
+        const id                  = document.getElementById('editDriverId').value;
+        const fullName            = document.getElementById('editFullName').value.trim();
+        const phoneNumber         = document.getElementById('editPhoneNumber').value.trim();
+        const vehicleNumber       = document.getElementById('editVehicleNumber').value.trim();
+        const companyName         = document.getElementById('editCompanyName').value.trim();
+        const status              = document.getElementById('editStatus').value;
+        const startLocation       = document.getElementById('editStartLocation').value.trim();
+        const destinationLocation = document.getElementById('editDestinationLocation').value.trim();
+
+        try {
+            const response = await fetch(`/admin/dashboard/drivers/${id}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ fullName, phoneNumber, vehicleNumber, companyName,
+                                       status, startLocation, destinationLocation })
+            });
+            const data = await response.json();
+            console.log(data);
+            closeEditModal();
+            loadDrivers();
+        } catch (err) {
+            console.error("Edit failed:", err);
+        }
+    };
+
+    // ─── DELETE Modal ─────────────────────────────────────────────────────────
+    function openDeleteModal(driver) {
+        pendingDeleteId = driver.id;
+        document.getElementById('deleteDriverName').textContent = driver.fullName || 'this driver';
+        document.getElementById('deleteDriverModal').classList.add('open');
+    }
+
+    function closeDeleteModal() {
+        pendingDeleteId = null;
+        document.getElementById('deleteDriverModal').classList.remove('open');
+    }
+    document.getElementById('deleteDriverModal').addEventListener('click', function(e) {
+        if (e.target === this) closeDeleteModal();
+    });
+
+    const confirmDelete = async () => {
+        if (!pendingDeleteId) return;
+        try {
+            const response = await fetch(`/admin/dashboard/drivers/${pendingDeleteId}`, {
+                method: "DELETE"
+            });
+            const data = await response.json();
+            console.log(data);
+            closeDeleteModal();
+            loadDrivers();
+        } catch (err) {
+            console.error("Delete failed:", err);
+        }
+    };
+
+    // ─── Build driver card ────────────────────────────────────────────────────
+    function createDriverCard(driver, colorIndex) {
+        const initial     = driver.fullName?.charAt(0).toUpperCase() || '?';
+        const color       = getColor(colorIndex);
+        const parcelCount = driver.activeParcels ?? 0;
+
+        let statusClass = 'inactive';
+        if (driver.status === 'Available') statusClass = 'available';
+        if (driver.status === 'On Duty')   statusClass = 'onduty';
+
+        const parcelBadgeStyle = parcelCount === 0
+            ? (driver.status === 'Inactive'
+                ? 'background:#f5f5f5;color:#888'
+                : 'background:#d1e7dd;color:#0a3622')
+            : '';
+
+        const actionBtn = driver.status === 'Inactive'
+            ? `<button class="btn-sm activate-btn">Activate</button>`
+            : `<button class="btn-sm edit-btn">Edit</button>`;
+
+        const card = document.createElement('div');
+        card.className = 'driver-card';
+
+        card.innerHTML = `
+            <div class="dc-header">
+                <div class="dc-avatar" style="background:${color}">${initial}</div>
+                <div>
+                    <div class="dc-name">${driver.fullName || '—'}</div>
+                    <div class="dc-vehicle">
+                        <i class="fa-solid fa-car fa-xs"></i> ${driver.vehicleNumber || '—'}
+                    </div>
+                </div>
+                <span class="dc-parcels" ${parcelBadgeStyle ? `style="${parcelBadgeStyle}"` : ''}>
+                    ${parcelCount} parcel${parcelCount !== 1 ? 's' : ''}
+                </span>
+            </div>
+            <div class="dc-status ${statusClass}">
+                <i class="fa-solid fa-circle fa-xs"></i> ${driver.status}
+            </div>
+            <div class="dc-info">
+                <div class="dc-info-row"><i class="fa-solid fa-phone"></i> ${driver.phoneNumber || '—'}</div>
+                <div class="dc-info-row">
+                    <i class="fa-solid fa-map-marker-alt"></i>
+                    ${driver.startLocation || '—'} → ${driver.destinationLocation || '—'}
+                </div>
+            </div>
+            <div class="dc-actions">
+                <button class="btn-sm view-btn">View</button>
+                ${actionBtn}
+                <button class="btn-sm danger remove-btn">Remove</button>
+            </div>
+        `;
+
+        // Attach events
+        card.querySelector('.view-btn').addEventListener('click', () => openViewModal(driver, colorIndex));
+        card.querySelector('.remove-btn').addEventListener('click', () => openDeleteModal(driver));
+
+        const editBtn = card.querySelector('.edit-btn');
+        if (editBtn) editBtn.addEventListener('click', () => openEditModal(driver));
+
+        const activateBtn = card.querySelector('.activate-btn');
+        if (activateBtn) activateBtn.addEventListener('click', () => openEditModal(driver));
+
+        return card;
+    }
+
+    // ─── Render grid ──────────────────────────────────────────────────────────
+    function renderGrid(page) {
+        const grid = document.querySelector('.drivers-grid');
+        grid.innerHTML = '';
+
+        const start     = (page - 1) * perPage;
+        const pageItems = filteredDrivers.slice(start, start + perPage);
+
+        if (pageItems.length === 0) {
+            grid.innerHTML = `
+                <div style="grid-column:1/-1;text-align:center;color:#aaa;padding:40px">
+                    No drivers found.
+                </div>`;
+            return;
+        }
+
+        pageItems.forEach((driver, i) => grid.appendChild(createDriverCard(driver, start + i)));
+    }
+
+    // ─── Pagination ───────────────────────────────────────────────────────────
+    function renderPagination() {
+        let paginationDiv = document.querySelector('.drivers-pagination');
+        if (!paginationDiv) {
+            paginationDiv = document.createElement('div');
+            paginationDiv.className = 'drivers-pagination';
+            document.querySelector('.card').appendChild(paginationDiv);
+        }
+
+        paginationDiv.innerHTML = '';
+        const totalPages = Math.ceil(filteredDrivers.length / perPage);
+        if (totalPages <= 1) return;
+
+        const maxPagesToShow = 5;
+        let startPage = Math.max(currentPage - Math.floor(maxPagesToShow / 2), 1);
+        let endPage   = Math.min(startPage + maxPagesToShow - 1, totalPages);
+        if (endPage - startPage < maxPagesToShow - 1) startPage = Math.max(endPage - maxPagesToShow + 1, 1);
+
+        const goTo = (p) => { currentPage = p; renderGrid(p); renderPagination(); };
+
+        const start  = (currentPage - 1) * perPage + 1;
+        const end    = Math.min(currentPage * perPage, filteredDrivers.length);
+        const infoEl = document.createElement('span');
+        infoEl.textContent = `Showing ${start}–${end} of ${filteredDrivers.length} drivers`;
+        paginationDiv.appendChild(infoEl);
+
+        const btnGroup = document.createElement('div');
+        btnGroup.className = 'page-btn-group';
+
+        const makeBtn = (content, page, disabled = false, active = false) => {
+            const btn = document.createElement('button');
+            btn.className = 'page-btn' + (active ? ' active' : '');
+            btn.innerHTML = content;
+            btn.disabled  = disabled;
+            if (!disabled) btn.addEventListener('click', () => goTo(page));
+            return btn;
+        };
+        const makeDots = () => {
+            const d = document.createElement('span');
+            d.className = 'pagination-dots';
+            d.textContent = '…';
+            return d;
+        };
+
+        btnGroup.appendChild(makeBtn(`<i class="fa-solid fa-chevron-left fa-xs"></i>`, currentPage - 1, currentPage === 1));
+        if (startPage > 1) { btnGroup.appendChild(makeBtn('1', 1)); if (startPage > 2) btnGroup.appendChild(makeDots()); }
+        for (let i = startPage; i <= endPage; i++) btnGroup.appendChild(makeBtn(i, i, false, i === currentPage));
+        if (endPage < totalPages) { if (endPage < totalPages - 1) btnGroup.appendChild(makeDots()); btnGroup.appendChild(makeBtn(totalPages, totalPages)); }
+        btnGroup.appendChild(makeBtn(`<i class="fa-solid fa-chevron-right fa-xs"></i>`, currentPage + 1, currentPage === totalPages));
+
+        paginationDiv.appendChild(btnGroup);
+    }
+
+    // ─── Stats ────────────────────────────────────────────────────────────────
+    function updateStats(drivers) {
+        const counts = { total: drivers.length, Available: 0, 'On Duty': 0, Inactive: 0 };
+        drivers.forEach(d => { if (counts[d.status] !== undefined) counts[d.status]++; });
+        document.querySelectorAll('.stat-mini').forEach(mini => {
+            const label = mini.querySelector('.stat-mini-label')?.textContent.trim();
+            const valEl = mini.querySelector('.stat-mini-val');
+            if (!valEl) return;
+            switch (label) {
+                case 'Total Drivers': valEl.textContent = counts.total;        break;
+                case 'Available':     valEl.textContent = counts['Available']; break;
+                case 'On Duty':       valEl.textContent = counts['On Duty'];   break;
+                case 'Inactive':      valEl.textContent = counts['Inactive'];  break;
+            }
+        });
+    }
+
+    // ─── Search ───────────────────────────────────────────────────────────────
+    function applySearch() {
+        const query = document.querySelector('.search-box input')?.value.toLowerCase().trim() || '';
+        filteredDrivers = allDrivers.filter(d =>
+            (d.fullName?.toLowerCase().includes(query)) ||
+            (d.vehicleNumber?.toLowerCase().includes(query))
+        );
+        currentPage = 1;
+        renderGrid(currentPage);
+        renderPagination();
+    }
+
+    // ─── Load ─────────────────────────────────────────────────────────────────
+    async function loadDrivers() {
+        try {
+            const response = await fetch("/admin/dashboard/getAlldrivers");
+            const result   = await response.json();
+            if (!result.success) { console.error("Error:", result.message); return; }
+
+            allDrivers      = result.data;
+            filteredDrivers = [...allDrivers];
+            currentPage     = 1;
+
+            updateStats(allDrivers);
+            renderGrid(currentPage);
+            renderPagination();
+
+            const input = document.querySelector('.search-box input');
+            if (input) input.addEventListener('input', applySearch);
+
+        } catch (err) {
+            console.error("Error loading drivers:", err);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadDrivers);
+</script>
+</body>
+</html>

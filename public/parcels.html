@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDSys | Parcels</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link rel="stylesheet" href="../styles/parcels.css">
+</head>
+<body>
+    <header>
+        <div class="headTab">
+            <div class="headTab-left">
+                <h2>Parcels</h2>
+                <span>Manage all registered parcels</span>
+            </div>
+            <div class="headTab-right">
+                <div class="notif-btn"><i class="fa-regular fa-bell"></i><div class="notif-dot"></div></div>
+                <p>David Default</p>
+                <div class="circle"><i class="fa-solid fa-user"></i></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <aside>
+            <div class="tabs">
+                <div class="sidebar-logo">
+                    <div class="logo-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                    <div><h3>PDSys</h3><p>Admin Panel</p></div>
+                </div>
+                <span class="nav-label">Main</span>
+                <a href="/admin/dashboard" class="tab"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+                <a href="/admin/parcels" class="tab active"><i class="fa-solid fa-box"></i> Parcels </a>
+                <a href="/admin/drivers" class="tab"><i class="fa-solid fa-id-card"></i> Drivers</a>
+                <a href="dispatch.html" class="tab"><i class="fa-solid fa-map-location-dot"></i> Dispatch</a>
+                <span class="nav-label">Reports</span>
+                <a href="analytics.html" class="tab"><i class="fa-solid fa-chart-bar"></i> Analytics</a>
+                <a href="alerts.html" class="tab"><i class="fa-solid fa-bell"></i> Alerts <span class="tab-badge">2</span></a>
+                <span class="nav-label">System</span>
+                <a href="staff.html" class="tab"><i class="fa-solid fa-users"></i> Staff</a>
+            </div>
+        </aside>
+
+        <div class="content">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fa-solid fa-box" style="color:#4f46e5;margin-right:8px"></i>All Parcels</span>
+                    <div class="header-actions">
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass" style="color:#aaa;font-size:13px"></i>
+                            <input type="text" id="searchInput" placeholder="Search tracking ID or name..." oninput="filterTable()"/>
+                        </div>
+                        <button class="btn btn-outline"><i class="fa-solid fa-filter"></i> Filter</button>
+                        <button class="btn btn-primary" onclick="openModal()"><i class="fa-solid fa-plus"></i> New Parcel</button>
+                    </div>
+                </div>
+                <div class="filter-row">
+                    <span class="filter-chip active" onclick="setFilter('all', this)">All (128)</span>
+                    <span class="filter-chip pending" onclick="setFilter('Pending', this)">Pending (24)</span>
+                    <span class="filter-chip transit" onclick="setFilter('In Transit', this)">In Transit (38)</span>
+                    <span class="filter-chip delivered" onclick="setFilter('Delivered', this)">Delivered (61)</span>
+                    <span class="filter-chip failed" onclick="setFilter('Failed', this)">Failed (5)</span>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tracking ID</th>
+                                <th>Sender</th>
+                                <th>Receiver</th>
+                                <th>Destination</th>
+                                <th>Weight</th>
+                                <th>Driver</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="parcelTable">
+        
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-footer">
+                    <span class="table-info">Showing 6 of 128 parcels</span>
+                    <div class="pagination">
+                        <button class="page-btn"><i class="fa-solid fa-chevron-left fa-xs"></i></button>
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <button class="page-btn"><i class="fa-solid fa-chevron-right fa-xs"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ADD PARCEL MODAL -->
+    <div class="modal-overlay" id="parcelModal">
+        <div class="modal">
+            <div class="modal-header">
+                <span class="modal-title"><i class="fa-solid fa-plus" style="color:#4f46e5;margin-right:8px"></i>Register New Parcel</span>
+                <button class="modal-close" onclick="closeModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-grid">
+                    <div class="section-divider">Sender Information</div>
+                    <div class="form-group">
+                        <label>Sender Name</label>
+                        <input type="text" id="senderName" placeholder="Full name"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Sender Contact</label>
+                        <input type="text" id="senderContact" placeholder="Phone number"/>
+                    </div>
+                    <div class="section-divider">Receiver Information</div>
+                    <div class="form-group">
+                        <label>Receiver Name</label>
+                        <input type="text" id="receiverName"  placeholder="Full name"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Receiver Contact</label>
+                        <input type="text" id="receiverContact"  placeholder="Phone number"/>
+                    </div>
+                    <div class="section-divider">Location Information</div>
+                    <div class="form-group">
+                        <label>Pickup Location</label>
+                        <input type="text" id="pickupLocation" placeholder="Pickup address"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Delivery Location</label>
+                        <input type="text" id="destinationLocation" placeholder="Delivery address"/>
+                    </div>
+                    <div class="section-divider">Parcel Details</div>
+                    <div class="form-group">
+                        <label>Weight (kg)</label>
+                        <input type="number" id="weight" placeholder="0.0" step="0.1"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Size</label>
+                        <select id="size">
+                            <option value="Small">Small</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Large">Large</option>
+                        </select>
+                    </div>
+                    <div class="form-group full">
+                        <label>Description</label>
+                        <textarea id="description" placeholder="Parcel contents description..."></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="RegisterParcel()" ><i class="fa-solid fa-plus"></i> Register Parcel</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+    let currentFilter = 'all';
+    let allParcels = [];       // full dataset
+    let filteredParcels = [];  // after search + filter
+    let currentPage = 1;
+    const rowsPerPage = 10;
+
+    // ─── Filter & Search (operates on array, not DOM) ───────────────────────
+    function applyFilters() {
+        const search = document.getElementById('searchInput').value.toLowerCase();
+
+        filteredParcels = allParcels.filter(parcel => {
+            const matchFilter = currentFilter === 'all' || parcel.status === currentFilter;
+            const matchSearch =
+                parcel.trackingId.toLowerCase().includes(search) ||
+                parcel.senderName.toLowerCase().includes(search) ||
+                (parcel.receiverName || '').toLowerCase().includes(search);
+            return matchFilter && matchSearch;
+        });
+
+        currentPage = 1; // reset to first page on every filter/search change
+        renderTable(currentPage);
+        renderPagination();
+    }
+
+    function setFilter(status, el) {
+        document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+        el.classList.add('active');
+        currentFilter = status;
+        applyFilters();
+    }
+
+    function filterTable() {
+        applyFilters();
+    }
+
+    // ─── Update filter chip counts dynamically ───────────────────────────────
+    function updateFilterCounts() {
+        const counts = { all: allParcels.length, Pending: 0, 'In Transit': 0, Delivered: 0, Failed: 0 };
+        allParcels.forEach(p => { if (counts[p.status] !== undefined) counts[p.status]++; });
+
+        document.querySelectorAll('.filter-chip').forEach(chip => {
+            const onclick = chip.getAttribute('onclick') || '';
+            const match = onclick.match(/'([^']+)'/);
+            if (!match) return;
+            const key = match[1];
+            const label = key === 'all' ? 'All' :
+                          key === 'In Transit' ? 'In Transit' :
+                          key;
+            chip.textContent = `${label} (${counts[key] ?? 0})`;
+
+            // Re-add onclick since we replaced textContent
+            chip.setAttribute('onclick', `setFilter('${key}', this)`);
+        });
+    }
+
+    // ─── Render table rows ───────────────────────────────────────────────────
+    function renderTable(page) {
+        const parcelTable = document.getElementById('parcelTable');
+        const infoSpan = document.querySelector('.table-info');
+
+        parcelTable.innerHTML = '';
+        const start = (page - 1) * rowsPerPage;
+        const end = start + rowsPerPage;
+        const pageItems = filteredParcels.slice(start, end);
+
+        pageItems.forEach(parcel => {
+            let badgeClass = '';
+            let actionsButtons = '';
+
+            switch (parcel.status) {
+                case 'Pending':
+                    badgeClass = 'badge-pending';
+                    actionsButtons = `<button class="btn-sm">View</button><button class="btn-sm">Assign</button><button class="btn-sm danger">Delete</button>`;
+                    break;
+                case 'In Transit':
+                    badgeClass = 'badge-transit';
+                    actionsButtons = `<button class="btn-sm">View</button><button class="btn-sm">Edit</button><button class="btn-sm danger">Delete</button>`;
+                    break;
+                case 'Delivered':
+                    badgeClass = 'badge-delivered';
+                    actionsButtons = `<button class="btn-sm">View</button><button class="btn-sm danger">Delete</button>`;
+                    break;
+                case 'Failed':
+                    badgeClass = 'badge-failed';
+                    actionsButtons = `<button class="btn-sm">Review</button><button class="btn-sm">Reassign</button><button class="btn-sm danger">Delete</button>`;
+                    break;
+                default:
+                    badgeClass = 'badge-pending';
+                    actionsButtons = `<button class="btn-sm">View</button><button class="btn-sm danger">Delete</button>`;
+            }
+
+            const tr = document.createElement('tr');
+            tr.setAttribute('data-status', parcel.status);
+            tr.innerHTML = `
+                <td><span class="tracking-id">${parcel.trackingId}</span></td>
+                <td>${parcel.senderName}</td>
+                <td>${parcel.receiverName || '—'}</td>
+                <td>${parcel.pickupLocation}</td>
+                <td>${parcel.weight} kg</td>
+                <td>${parcel.destinationLocation}</td>
+                <td><span class="status-badge ${badgeClass}"><i class="fa-solid fa-circle fa-xs"></i>${parcel.status}</span></td>
+                <td><div class="actions-cell">${actionsButtons}</div></td>
+            `;
+            parcelTable.appendChild(tr);
+        });
+
+        const showingStart = filteredParcels.length === 0 ? 0 : start + 1;
+        const showingEnd = Math.min(end, filteredParcels.length);
+        infoSpan.textContent = `Showing ${showingStart}–${showingEnd} of ${filteredParcels.length} parcels`;
+    }
+
+    // ─── Render pagination ───────────────────────────────────────────────────
+    function renderPagination() {
+        const paginationDiv = document.querySelector('.pagination');
+        paginationDiv.innerHTML = '';
+        const totalPages = Math.ceil(filteredParcels.length / rowsPerPage);
+        if (totalPages <= 1) return;
+
+        const maxPagesToShow = 5;
+        let startPage = Math.max(currentPage - Math.floor(maxPagesToShow / 2), 1);
+        let endPage = Math.min(startPage + maxPagesToShow - 1, totalPages);
+        if (endPage - startPage < maxPagesToShow - 1) startPage = Math.max(endPage - maxPagesToShow + 1, 1);
+
+        const goTo = (p) => { currentPage = p; renderTable(p); renderPagination(); };
+
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'page-btn';
+        prevBtn.innerHTML = `<i class="fa-solid fa-chevron-left fa-xs"></i>`;
+        prevBtn.disabled = currentPage === 1;
+        prevBtn.addEventListener('click', () => goTo(currentPage - 1));
+        paginationDiv.appendChild(prevBtn);
+
+        if (startPage > 1) {
+            const btn = document.createElement('button');
+            btn.className = 'page-btn'; btn.textContent = 1;
+            btn.addEventListener('click', () => goTo(1));
+            paginationDiv.appendChild(btn);
+            if (startPage > 2) { const d = document.createElement('span'); d.textContent = '…'; d.style.padding = '0 5px'; paginationDiv.appendChild(d); }
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
+            const btn = document.createElement('button');
+            btn.className = 'page-btn' + (i === currentPage ? ' active' : '');
+            btn.textContent = i;
+            btn.addEventListener('click', () => goTo(i));
+            paginationDiv.appendChild(btn);
+        }
+
+        if (endPage < totalPages) {
+            if (endPage < totalPages - 1) { const d = document.createElement('span'); d.textContent = '…'; d.style.padding = '0 5px'; paginationDiv.appendChild(d); }
+            const btn = document.createElement('button');
+            btn.className = 'page-btn'; btn.textContent = totalPages;
+            btn.addEventListener('click', () => goTo(totalPages));
+            paginationDiv.appendChild(btn);
+        }
+
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'page-btn';
+        nextBtn.innerHTML = `<i class="fa-solid fa-chevron-right fa-xs"></i>`;
+        nextBtn.disabled = currentPage === totalPages;
+        nextBtn.addEventListener('click', () => goTo(currentPage + 1));
+        paginationDiv.appendChild(nextBtn);
+    }
+
+    // ─── Modal helpers ───────────────────────────────────────────────────────
+    function openModal() { document.getElementById('parcelModal').classList.add('open'); }
+    function closeModal() { document.getElementById('parcelModal').classList.remove('open'); }
+    document.getElementById('parcelModal').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
+
+    // ─── Register Parcel ─────────────────────────────────────────────────────
+    const RegisterParcel = async () => {
+        const senderName        = document.getElementById("senderName").value.trim();
+        const senderContact     = document.getElementById("senderContact").value.trim();
+        const receiverName      = document.getElementById("receiverName").value.trim();
+        const receiverContact   = document.getElementById("receiverContact").value.trim();
+        const pickupLocation    = document.getElementById("pickupLocation").value.trim();
+        const destinationLocation = document.getElementById("destinationLocation").value.trim();
+        const weight            = document.getElementById("weight").value.trim();
+        const size              = document.getElementById("size").value.trim();
+        const description       = document.getElementById("description").value.trim();
+
+        const response = await fetch("/admin/dashboard/parcels", {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ senderName, senderContact, receiverName, receiverContact,
+                                   pickupLocation, destinationLocation, weight, size, description })
+        });
+        const data = await response.json();
+        console.log(data);
+    };
+
+    // ─── Load data on page ready ─────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            const response = await fetch("/admin/dashboard/getAllparcels");
+            const result = await response.json();
+
+            if (!result.success) { console.error("Error fetching parcels:", result.message); return; }
+
+            allParcels = result.data;
+            filteredParcels = [...allParcels];
+
+            updateFilterCounts();   // set real counts on chips
+            renderTable(currentPage);
+            renderPagination();
+
+        } catch (err) {
+            console.error("Error loading parcels:", err);
+        }
+    });
+</script>
+</body>
+</html>

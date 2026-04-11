@@ -16,6 +16,8 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    min-height: 100vh;
+
 }
 
 /* ===== HEADER ===== */
@@ -37,7 +39,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 60px;
+    padding: 0 60px;
     gap: 60px;
     min-height: 80vh;
 }
@@ -93,7 +95,6 @@ footer {
     justify-content: space-between;
     align-items: center;
     padding: 20px 60px;
-    margin-top: 60px;
 }
 
 .followus {
@@ -104,8 +105,11 @@ footer {
 
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 900px) {
+    header{
+        justify-content: center;
+    }
     main {
-        flex-direction: column;
+        flex-direction: column-reverse;
         text-align: center;
     }
 
@@ -141,7 +145,7 @@ footer {
               transparent, and dependable.Your parcel is more than just a package
                — it’s a promise we deliver on every time.
             </p>
-           <a href="Login.html"><button>LogIn</button></a>
+           <a href="/login"><button>LogIn</button></a>
         </div>
 
         <div class="Showimage">

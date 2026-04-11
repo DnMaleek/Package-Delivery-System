@@ -4,136 +4,361 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDSys | Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link rel="stylesheet" href="../styles/dashboard.css"/>
 </head>
-<style>
 
-   * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: rgb(234, 234, 234);
-    min-height: 100vh;
-    padding: 20px 40px;
-}
-
-/* ===== HEADER ===== */
-header {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 20px;
-}
-
-.headTab {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 12px;
-    padding: 10px 20px;
-    width: 100%;
-    background-color: rgb(249, 249, 249);
-    border: 1px solid rgb(230, 228, 240);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    border-radius: 16px;
-}
-
-.circle {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid black;
-}
-
-/* ===== MAIN LAYOUT ===== */
-main {
-    display: flex;
-    gap: 25px;
-    min-height: calc(100vh - 140px);
-}
-
-/* ===== SIDEBAR ===== */
-aside {
-    width: 240px;
-}
-
-.tabs {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-    padding: 20px;
-
-    background-color: rgb(249, 249, 249);
-    border: 1px solid rgb(230, 228, 240);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    border-radius: 16px;
-
-    height: 100%;
-}
-
-/* ===== TABS ===== */
-.tab {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    padding: 10px 15px;
-    border-radius: 10px;
-    cursor: pointer;
-
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.tab:hover {
-    transform: translateX(6px);
-    box-shadow: -4px 0px 6px rgba(0, 0, 0, 0.08);
-}
-
-/* ===== MAIN CONTENT ===== */
-.parceltabs {
-    flex: 1;
-    padding: 25px;
-
-    background-color: rgb(249, 249, 249);
-    border: 1px solid rgb(230, 228, 240);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    border-radius: 16px;
-}
-
-</style>
 <body>
     <header>
         <div class="headTab">
-            <p>David Default</p>
-            <div class="circle">
-                 <i class="fa-solid fa-user"></i>
+            <div class="headTab-left">
+                <img src="../logo.svg" alt="Logo" width="50" height="50">
+                <p class="CompanyName">TRANSEND</p>
+                <span>Welcome back</span>
+            </div>
+            <div class="headTab-right">
+                <div class="notif-btn"><i class="fa-regular fa-bell"></i><div class="notif-dot"></div></div>
+                <p>David Default</p>
+                <div class="circle"><i class="fa-solid fa-user"></i></div>
             </div>
         </div>
     </header>
 
     <main>
+        <aside>
+            <div class="tabs">
+                <div class="sidebar-logo">
+                    <div class="logo-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                    <div><h3>PDSys</h3><p>Admin Panel</p></div>
+                </div>
+                <span class="nav-label">Main</span>
+                <a href="/admin/dashboard" class="tab active"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+                <a href="/admin/parcels" class="tab"><i class="fa-solid fa-box"></i> Parcels </a>
+                <a href="/admin/drivers" class="tab"><i class="fa-solid fa-id-card"></i> Drivers</a>
+                <a href="dispatch.html" class="tab"><i class="fa-solid fa-map-location-dot"></i> Dispatch</a>
+                <span class="nav-label">Reports</span>
+                <a href="analytics.html" class="tab"><i class="fa-solid fa-chart-bar"></i> Analytics</a>
+                <a href="alerts.html" class="tab"><i class="fa-solid fa-bell"></i> Alerts <span class="tab-badge">2</span></a>
+                <span class="nav-label">System</span>
+                <a href="staff.html" class="tab"><i class="fa-solid fa-users"></i> Staff</a>
+            </div>
+        </aside>
 
-    <aside>
-        <div class="tabs">
-            <p class="tab"><i class="fa-solid fa-truck"></i> Parcels</p>
-            <p class="tab"><i class="fa-regular fa-id-card"></i> Drivers</p>
+        <div class="content">
+            <!-- STATS -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <div><div class="stat-label">Total Parcels</div><div class="stat-value">128</div></div>
+                        <div class="stat-icon" style="background:#eef2ff"><i class="fa-solid fa-box" style="color:#4f46e5"></i></div>
+                    </div>
+                    <div class="stat-change">↑ 12 this week</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <div><div class="stat-label">Pending</div><div class="stat-value">24</div></div>
+                        <div class="stat-icon" style="background:#fff8e1"><i class="fa-solid fa-clock" style="color:#f59e0b"></i></div>
+                    </div>
+                    <div class="stat-change" style="color:#888">Awaiting assignment</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <div><div class="stat-label">In Transit</div><div class="stat-value">38</div></div>
+                        <div class="stat-icon" style="background:#e0f7fa"><i class="fa-solid fa-truck" style="color:#0891b2"></i></div>
+                    </div>
+                    <div class="stat-change">Active deliveries</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <div><div class="stat-label">Delivered</div><div class="stat-value">61</div></div>
+                        <div class="stat-icon" style="background:#dcfce7"><i class="fa-solid fa-circle-check" style="color:#16a34a"></i></div>
+                    </div>
+                    <div class="stat-change">↑ 8 today</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <div><div class="stat-label">Failed</div><div class="stat-value">5</div></div>
+                        <div class="stat-icon" style="background:#fee2e2"><i class="fa-solid fa-circle-xmark" style="color:#dc2626"></i></div>
+                    </div>
+                    <div class="stat-change down">⚠ Needs review</div>
+                </div>
+            </div>
+
+            <!-- TABLE + ACTIVITY -->
+            <div class="cards-row">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Recent Parcels</span>
+                        <a href="/admin/parcels" class="card-link">View all →</a>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tracking ID</th>
+                                    <th>Receiver</th>
+                                    <th>Destination</th>
+                                    <th>Driver</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="tracking-id">PKT-2026-0041</span></td>
+                                    <td>Maria Santos</td>
+                                    <td>Brgy. Poblacion</td>
+                                    <td>Juan D.</td>
+                                    <td><span class="status-badge badge-transit"><i class="fa-solid fa-circle fa-xs"></i>In Transit</span></td>
+                                    <td><button class="btn-sm">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="tracking-id">PKT-2026-0040</span></td>
+                                    <td>Rey Gomez</td>
+                                    <td>Brgy. San Jose</td>
+                                    <td>—</td>
+                                    <td><span class="status-badge badge-pending"><i class="fa-solid fa-circle fa-xs"></i>Pending</span></td>
+                                    <td><button class="btn-sm">Assign</button></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="tracking-id">PKT-2026-0039</span></td>
+                                    <td>Lena Cruz</td>
+                                    <td>Brgy. Bagong Silang</td>
+                                    <td>Carlo M.</td>
+                                    <td><span class="status-badge badge-delivered"><i class="fa-solid fa-circle fa-xs"></i>Delivered</span></td>
+                                    <td><button class="btn-sm">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="tracking-id">PKT-2026-0038</span></td>
+                                    <td>Frank Reyes</td>
+                                    <td>Brgy. Sta. Cruz</td>
+                                    <td>Juan D.</td>
+                                    <td><span class="status-badge badge-failed"><i class="fa-solid fa-circle fa-xs"></i>Failed</span></td>
+                                    <td><button class="btn-sm">Review</button></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="tracking-id">PKT-2026-0037</span></td>
+                                    <td>Ana Villanueva</td>
+                                    <td>Brgy. Mabolo</td>
+                                    <td>—</td>
+                                    <td><span class="status-badge badge-pending"><i class="fa-solid fa-circle fa-xs"></i>Pending</span></td>
+                                    <td><button class="btn-sm">Assign</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Activity Log</span>
+                        <span class="card-link">Clear</span>
+                    </div>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-dot" style="background:#27ae60"></div>
+                            <div>
+                                <div class="activity-text"><strong>PKT-2026-0039</strong> marked Delivered by Carlo M.</div>
+                                <div class="activity-time">2 mins ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-dot" style="background:#e74c3c"></div>
+                            <div>
+                                <div class="activity-text"><strong>PKT-2026-0038</strong> delivery failed — no one home</div>
+                                <div class="activity-time">18 mins ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-dot" style="background:#4f46e5"></div>
+                            <div>
+                                <div class="activity-text">New parcel <strong>PKT-2026-0041</strong> registered by Staff1</div>
+                                <div class="activity-time">34 mins ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-dot" style="background:#0891b2"></div>
+                            <div>
+                                <div class="activity-text"><strong>PKT-2026-0041</strong> assigned to Juan D. and dispatched</div>
+                                <div class="activity-time">40 mins ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-dot" style="background:#aaa"></div>
+                            <div>
+                                <div class="activity-text">Driver <strong>Carlo M.</strong> set to Available</div>
+                                <div class="activity-time">1 hr ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-dot" style="background:#4f46e5"></div>
+                            <div>
+                                <div class="activity-text">Staff1 logged in to the system</div>
+                                <div class="activity-time">2 hrs ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DRIVERS -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Driver Overview</span>
+                    <a href="drivers.html" class="card-link">Manage drivers →</a>
+                </div>
+                <div class="drivers-grid">
+                    <div class="driver-mini">
+                        <div class="driver-top">
+                            <div class="driver-avatar" style="background:#2c3e50">J</div>
+                            <div><div class="driver-name">Juan Dela Cruz</div><div class="driver-region">North Region · ABC-1234</div></div>
+                        </div>
+                        <div class="driver-status status-onduty">On Duty</div>
+                        <div style="font-size:11px;color:#aaa">3 active parcels</div>
+                    </div>
+                    <div class="driver-mini">
+                        <div class="driver-top">
+                            <div class="driver-avatar" style="background:#16a34a">C</div>
+                            <div><div class="driver-name">Carlo Mendoza</div><div class="driver-region">South Region · XYZ-5678</div></div>
+                        </div>
+                        <div class="driver-status status-available">Available</div>
+                        <div style="font-size:11px;color:#aaa">0 active parcels</div>
+                    </div>
+                    <div class="driver-mini">
+                        <div class="driver-top">
+                            <div class="driver-avatar" style="background:#7c3aed">R</div>
+                            <div><div class="driver-name">Rico Bautista</div><div class="driver-region">East Region · DEF-9012</div></div>
+                        </div>
+                        <div class="driver-status status-onduty">On Duty</div>
+                        <div style="font-size:11px;color:#aaa">5 active parcels</div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </aside>
-
-    <!-- ===== Parcels ===== !-->
-    <div class="parceltabs">
-        
-    </div>
     </main>
-   
+
+    <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            const response = await fetch("/admin/dashboard/getAllparcels");
+            const result = await response.json();
+
+            if (!result.success) {
+                console.error("Error fetching parcels:", result.message);
+                return;
+            }
+
+            const parcels = result.data;
+
+            // ─── STATS ────────────────────────────────────────────────────────
+            const counts = {
+                total:     parcels.length,
+                Pending:   0,
+                'In Transit': 0,
+                Delivered: 0,
+                Failed:    0
+            };
+
+            parcels.forEach(p => {
+                if (counts[p.status] !== undefined) counts[p.status]++;
+            });
+
+            // Inject counts into stat cards
+            const statCards = document.querySelectorAll('.stat-card');
+
+            statCards.forEach(card => {
+                const label = card.querySelector('.stat-label')?.textContent.trim();
+                const valueEl = card.querySelector('.stat-value');
+                const changeEl = card.querySelector('.stat-change');
+
+                if (!valueEl) return;
+
+                switch (label) {
+                    case 'Total Parcels':
+                        valueEl.textContent = counts.total;
+                        if (changeEl) changeEl.textContent = `↑ ${counts.total} total`;
+                        break;
+                    case 'Pending':
+                        valueEl.textContent = counts['Pending'];
+                        break;
+                    case 'In Transit':
+                        valueEl.textContent = counts['In Transit'];
+                        break;
+                    case 'Delivered':
+                        valueEl.textContent = counts['Delivered'];
+                        break;
+                    case 'Failed':
+                        valueEl.textContent = counts['Failed'];
+                        break;
+                }
+            });
+
+            // ─── RECENT PARCELS TABLE (latest 5) ─────────────────────────────
+            const tbody = document.querySelector('.card .table-wrap tbody');
+            if (!tbody) return;
+
+            tbody.innerHTML = '';
+
+            // Sort by most recently registered (assumes higher trackingId = newer)
+            const recent = [...parcels]
+                .sort((a, b) => b.trackingId.localeCompare(a.trackingId))
+                .slice(0, 5);
+
+            if (recent.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align:center;color:#aaa;padding:24px">
+                            No parcels found.
+                        </td>
+                    </tr>`;
+                return;
+            }
+
+            recent.forEach(parcel => {
+                let badgeClass = '';
+                let actionBtn = '';
+
+                switch (parcel.status) {
+                    case 'Pending':
+                        badgeClass = 'badge-pending';
+                        actionBtn = `<button class="btn-sm">Assign</button>`;
+                        break;
+                    case 'In Transit':
+                        badgeClass = 'badge-transit';
+                        actionBtn = `<button class="btn-sm">View</button>`;
+                        break;
+                    case 'Delivered':
+                        badgeClass = 'badge-delivered';
+                        actionBtn = `<button class="btn-sm">View</button>`;
+                        break;
+                    case 'Failed':
+                        badgeClass = 'badge-failed';
+                        actionBtn = `<button class="btn-sm">Review</button>`;
+                        break;
+                    default:
+                        badgeClass = 'badge-pending';
+                        actionBtn = `<button class="btn-sm">View</button>`;
+                }
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><span class="tracking-id">${parcel.trackingId}</span></td>
+                    <td>${parcel.receiverName || '—'}</td>
+                    <td>${parcel.destinationLocation || '—'}</td>
+                    <td>${parcel.driverName || '—'}</td>
+                    <td>
+                        <span class="status-badge ${badgeClass}">
+                            <i class="fa-solid fa-circle fa-xs"></i>${parcel.status}
+                        </span>
+                    </td>
+                    <td>${actionBtn}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+        } catch (err) {
+            console.error("Error loading dashboard data:", err);
+        }
+    });
+</script>
 </body>
 </html>
