@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDSys | Dispatch</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link rel="stylesheet" href="../styles/dispatch.css">
+    
+</head>
+<body>
+    <header>
+        <div class="headTab">
+            <div class="headTab-left"><h2>Dispatch</h2><span>Assign parcels to available drivers</span></div>
+            <div class="headTab-right">
+                <div class="notif-btn"><i class="fa-regular fa-bell"></i><div class="notif-dot"></div></div>
+                <p>David Default</p>
+                <div class="circle"><i class="fa-solid fa-user"></i></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <aside>
+            <div class="tabs">
+                <div class="sidebar-logo">
+                    <div class="logo-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                    <div><h3>PDSys</h3><p>Admin Panel</p></div>
+                </div>
+                <span class="nav-label">Main</span>
+                <a href="/admin/dashboard" class="tab"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+                <a href="/admin/parcels" class="tab"><i class="fa-solid fa-box"></i> Parcels </a>
+                <a href="/admin/drivers" class="tab"><i class="fa-solid fa-id-card"></i> Drivers</a>
+                <a href="/admin/dispatch" class="tab active"><i class="fa-solid fa-map-location-dot"></i> Dispatch</a>
+                <span class="nav-label">Reports</span>
+                <a href="analytics.html" class="tab"><i class="fa-solid fa-chart-bar"></i> Analytics</a>
+                <a href="alerts.html" class="tab"><i class="fa-solid fa-bell"></i> Alerts <span class="tab-badge">2</span></a>
+                <span class="nav-label">System</span>
+                <a href="staff.html" class="tab"><i class="fa-solid fa-users"></i> Staff</a>
+            </div>
+        </aside>
+
+        <div class="content">
+            <!-- ASSIGN SECTION -->
+            <div class="dispatch-grid">
+                <!-- PENDING PARCELS -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title"><i class="fa-solid fa-box" style="color:#f59e0b;margin-right:8px"></i>Pending Parcels</span>
+                        <span style="font-size:12px;color:#888">Click to select</span>
+                    </div>
+                    <div class="parcel-list">
+                        <div class="parcel-item selected" onclick="selectParcel(this, 'PKT-2026-0040', 'Brgy. San Jose')">
+                            <div class="parcel-item-icon">📦</div>
+                            <div class="parcel-item-info">
+                                <div class="parcel-item-id">PKT-2026-0040</div>
+                                <div class="parcel-item-dest"><i class="fa-solid fa-location-dot fa-xs"></i> Brgy. San Jose</div>
+                            </div>
+                            <div class="parcel-item-weight">1.2 kg</div>
+                        </div>
+                        <div class="parcel-item" onclick="selectParcel(this, 'PKT-2026-0037', 'Brgy. Mabolo')">
+                            <div class="parcel-item-icon">📦</div>
+                            <div class="parcel-item-info">
+                                <div class="parcel-item-id">PKT-2026-0037</div>
+                                <div class="parcel-item-dest"><i class="fa-solid fa-location-dot fa-xs"></i> Brgy. Mabolo</div>
+                            </div>
+                            <div class="parcel-item-weight">4.5 kg</div>
+                        </div>
+                        <div class="parcel-item" onclick="selectParcel(this, 'PKT-2026-0035', 'Brgy. Looban')">
+                            <div class="parcel-item-icon">📦</div>
+                            <div class="parcel-item-info">
+                                <div class="parcel-item-id">PKT-2026-0035</div>
+                                <div class="parcel-item-dest"><i class="fa-solid fa-location-dot fa-xs"></i> Brgy. Looban</div>
+                            </div>
+                            <div class="parcel-item-weight">0.9 kg</div>
+                        </div>
+                        <div class="parcel-item" onclick="selectParcel(this, 'PKT-2026-0033', 'Brgy. Pinyahan')">
+                            <div class="parcel-item-icon">📦</div>
+                            <div class="parcel-item-info">
+                                <div class="parcel-item-id">PKT-2026-0033</div>
+                                <div class="parcel-item-dest"><i class="fa-solid fa-location-dot fa-xs"></i> Brgy. Pinyahan</div>
+                            </div>
+                            <div class="parcel-item-weight">2.1 kg</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AVAILABLE DRIVERS -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title"><i class="fa-solid fa-id-card" style="color:#16a34a;margin-right:8px"></i>Available Drivers</span>
+                        <span style="font-size:12px;color:#888">Click to select</span>
+                    </div>
+                    <div class="driver-list">
+                        <div class="driver-item selected" onclick="selectDriver(this, 'Carlo Mendoza')">
+                            <div class="driver-avatar" style="background:#16a34a">C</div>
+                            <div>
+                                <div class="driver-info-name">Carlo Mendoza</div>
+                                <div class="driver-info-region">South Region · XYZ-5678</div>
+                            </div>
+                            <div class="driver-dot dot-available"></div>
+                        </div>
+                        <div class="driver-item" onclick="selectDriver(this, 'Marlo Tan')">
+                            <div class="driver-avatar" style="background:#e67e22">M</div>
+                            <div>
+                                <div class="driver-info-name">Marlo Tan</div>
+                                <div class="driver-info-region">West Region · GHI-3456</div>
+                            </div>
+                            <div class="driver-dot dot-available"></div>
+                        </div>
+                        <div class="driver-item busy">
+                            <div class="driver-avatar" style="background:#2c3e50">J</div>
+                            <div>
+                                <div class="driver-info-name">Juan Dela Cruz</div>
+                                <div class="driver-info-region">North Region · On Duty</div>
+                            </div>
+                            <div class="driver-dot dot-busy"></div>
+                        </div>
+                        <div class="driver-item busy">
+                            <div class="driver-avatar" style="background:#7c3aed">R</div>
+                            <div>
+                                <div class="driver-info-name">Rico Bautista</div>
+                                <div class="driver-info-region">East Region · On Duty</div>
+                            </div>
+                            <div class="driver-dot dot-busy"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ASSIGN PANEL -->
+            <div class="card">
+                <div class="assign-panel">
+                    <h4><i class="fa-solid fa-link" style="margin-right:8px;color:#4f46e5"></i>Assignment Preview</h4>
+                    <div class="assign-row">
+                        <div class="assign-box">
+                            <div class="assign-box-label">Selected Parcel</div>
+                            <div class="assign-box-val" id="selectedParcel">PKT-2026-0040 · Brgy. San Jose</div>
+                        </div>
+                        <div class="assign-arrow">→</div>
+                        <div class="assign-box">
+                            <div class="assign-box-label">Assigned Driver</div>
+                            <div class="assign-box-val" id="selectedDriver">Carlo Mendoza</div>
+                        </div>
+                    </div>
+                    <div class="assign-actions">
+                        <button class="btn btn-outline">Clear Selection</button>
+                        <button class="btn btn-success" onclick="dispatchParcel()"><i class="fa-solid fa-paper-plane"></i> Dispatch Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACTIVE DELIVERIES -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fa-solid fa-truck" style="color:#0891b2;margin-right:8px"></i>Active Deliveries</span>
+                    <span style="font-size:12px;color:#888">Currently in transit</span>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tracking ID</th>
+                            <th>Destination</th>
+                            <th>Driver</th>
+                            <th>Dispatched</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="tracking-id">PKT-2026-0041</span></td>
+                            <td>Brgy. Poblacion</td>
+                            <td>Juan Dela Cruz</td>
+                            <td>Today, 9:30 AM</td>
+                            <td><span class="status-badge badge-transit"><i class="fa-solid fa-circle fa-xs"></i>In Transit</span></td>
+                            <td><button class="btn-sm">Update Status</button></td>
+                        </tr>
+                        <tr>
+                            <td><span class="tracking-id">PKT-2026-0036</span></td>
+                            <td>Brgy. Pinyahan</td>
+                            <td>Rico Bautista</td>
+                            <td>Today, 8:45 AM</td>
+                            <td><span class="status-badge badge-transit"><i class="fa-solid fa-circle fa-xs"></i>In Transit</span></td>
+                            <td><button class="btn-sm">Update Status</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i> <span id="toastMsg"></span></div>
+
+    <script>
+        let parcelSel = { id: 'PKT-2026-0040', dest: 'Brgy. San Jose' };
+        let driverSel = 'Carlo Mendoza';
+
+        function selectParcel(el, id, dest) {
+            document.querySelectorAll('.parcel-item').forEach(i => i.classList.remove('selected'));
+            el.classList.add('selected');
+            parcelSel = { id, dest };
+            document.getElementById('selectedParcel').textContent = id + ' · ' + dest;
+        }
+
+        function selectDriver(el, name) {
+            if (el.classList.contains('busy')) return;
+            document.querySelectorAll('.driver-item').forEach(i => i.classList.remove('selected'));
+            el.classList.add('selected');
+            driverSel = name;
+            document.getElementById('selectedDriver').textContent = name;
+        }
+
+        function dispatchParcel() {
+            const t = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = parcelSel.id + ' dispatched to ' + driverSel + '!';
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 3000);
+        }
+    </script>
+</body>
+</html>

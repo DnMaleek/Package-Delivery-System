@@ -77,6 +77,10 @@ const getDrivers = (req,res) => {
     res.sendFile(path.join(__dirname,'../../public','drivers.html'))
 }
 
+const getDispatch = (req,res) => {
+    res.sendFile(path.join(__dirname,'../../public','dispatch.html'))
+}
+
 const postParcels = async (req, res) => {
   const {
     senderName,
@@ -197,4 +201,57 @@ const getAlldrivers = async (req, res) => {
   }
 };
 
-module.exports = {postDashboard,getDashboard,getParcels,getDrivers,postParcels,getAllparcels,postDrivers,getAlldrivers};
+const editDriver = (req, res) => {
+  id = req.params.id;
+  data = req.body;
+
+  const sqlquery = `
+  UPDATE drivers
+  SET 
+    fullName = ?, 
+    phoneNumber = ?, 
+    vehicleNumber = ?, 
+    companyName = ?, 
+    status = ?, 
+    startLocation = ?, 
+    destinationLocation = ?
+  WHERE id = ?
+`
+const values = [
+  data.fullName,
+  data.phoneNumber,
+  data.vehicleNumber,
+  data.companyName,
+  data.status,
+  data.startLocation,
+  data.destinationLocation,
+  id
+];
+
+db.query(sqlquery, values, (err,result) => {
+        if (err) throw err;
+
+        if(!err){
+            return res.status(200).json({message:"Driver updated sucessfully"})
+        } else {
+            res.status(401).json({message:"Internal server Error"})
+        }} );
+
+}
+
+const deleteDriver = (req,res) => {
+  id = req.params.pendingDeleteId;
+
+  const sqlquery = "DELETE FROM Drivers WHERE id=?"
+
+  db.query(sqlquery, [id], (err,result) => {
+        if (err) throw err;
+
+        if(!err){
+            return res.status(200).json({message:"Driver deleted sucessfully"})
+        } else {
+            res.status(401).json({message:"Internal server Error"})
+        }} )
+};
+
+module.exports = {postDashboard,getDashboard,getParcels,getDrivers,postParcels,getAllparcels,postDrivers,getAlldrivers,editDriver,deleteDriver,getDispatch};

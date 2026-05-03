@@ -1,0 +1,101 @@
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: rgb(234,234,234); min-height: 100vh; padding: 20px 40px; }
+        header { display: flex; margin-bottom: 20px; }
+        .headTab { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 20px; width: 100%; background-color: rgb(249,249,249); border: 1px solid rgb(230,228,240); box-shadow: 0 8px 20px rgba(0,0,0,0.08); border-radius: 16px; }
+        .headTab-left h2 { font-size: 18px; font-weight: 700; color: #333; }
+        .headTab-left span { font-size: 12px; color: #888; }
+        .headTab-right { display: flex; align-items: center; gap: 12px; }
+        .circle { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid #ccc; background: #f0f0f0; cursor: pointer; }
+        .notif-btn { position: relative; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid #ccc; background: #f0f0f0; cursor: pointer; }
+        .notif-dot { position: absolute; top: 6px; right: 6px; width: 8px; height: 8px; border-radius: 50%; background: #e74c3c; }
+        main { display: flex; gap: 25px; min-height: calc(100vh - 140px); }
+        aside { width: 240px; flex-shrink: 0; }
+        .tabs { display: flex; flex-direction: column; gap: 6px; padding: 20px; background-color: rgb(249,249,249); border: 1px solid rgb(230,228,240); box-shadow: 0 8px 20px rgba(0,0,0,0.08); border-radius: 16px; height: 100%; }
+        .sidebar-logo { display: flex; align-items: center; gap: 10px; padding: 10px 15px; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 18px; }
+        .sidebar-logo .logo-icon { width: 36px; height: 36px; border-radius: 10px; background: #2c3e50; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; }
+        .sidebar-logo h3 { font-size: 15px; font-weight: 700; color: #2c3e50; }
+        .sidebar-logo p { font-size: 11px; color: #999; }
+        .nav-label { font-size: 10px; font-weight: 700; color: #aaa; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 15px; margin-top: 6px; }
+        .tab { display: flex; align-items: center; gap: 10px; padding: 10px 15px; border-radius: 10px; cursor: pointer; transition: all 0.2s; color: #555; font-size: 14px; text-decoration: none; }
+        .tab:hover { background: #f0f0f0; transform: translateX(4px); color: #2c3e50; }
+        .tab.active { background: #2c3e50; color: white; }
+        .tab i { width: 18px; color: #888; }
+        .tab.active i { color: white; }
+        .tab-badge { margin-left: auto; background: #e74c3c; color: white; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 20px; }
+        .tab.active .tab-badge { background: rgba(255,255,255,0.3); }
+        .content { flex: 1; display: flex; flex-direction: column; gap: 18px; }
+        .card { background: white; border: 1px solid rgb(230,228,240); box-shadow: 0 4px 12px rgba(0,0,0,0.06); border-radius: 14px; overflow: hidden; }
+        .card-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; gap: 10px; }
+        .card-title { font-size: 15px; font-weight: 700; color: #2c3e50; }
+        .btn { padding: 9px 18px; border-radius: 10px; border: none; font-family: 'Segoe UI', sans-serif; font-weight: 600; font-size: 13px; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+        .btn-primary { background: #2c3e50; color: white; }
+        .btn-primary:hover { background: #1a252f; }
+        .btn-success { background: #16a34a; color: white; }
+        .btn-success:hover { background: #15803d; }
+        .btn-outline { background: white; color: #555; border: 1px solid #ddd; }
+        .btn-outline:hover { border-color: #2c3e50; color: #2c3e50; }
+        .tracking-id { font-weight: 700; color: #2c3e50; font-size: 12px; font-family: monospace; }
+        .status-badge { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+        .badge-pending { background: #fff3cd; color: #856404; }
+        .badge-transit { background: #cff4fc; color: #055160; }
+        .badge-delivered { background: #d1e7dd; color: #0a3622; }
+
+        /* DISPATCH LAYOUT */
+        .dispatch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+        /* PENDING PARCEL LIST */
+        .parcel-list { display: flex; flex-direction: column; }
+        .parcel-item {
+            display: flex; align-items: center; gap: 14px;
+            padding: 14px 20px; border-bottom: 1px solid #f7f7f7;
+            cursor: pointer; transition: background 0.2s;
+        }
+        .parcel-item:last-child { border-bottom: none; }
+        .parcel-item:hover { background: #f9f9f9; }
+        .parcel-item.selected { background: #eef2ff; border-left: 3px solid #4f46e5; }
+        .parcel-item-icon { width: 38px; height: 38px; border-radius: 10px; background: #fff3cd; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+        .parcel-item-info { flex: 1; }
+        .parcel-item-id { font-size: 12px; font-weight: 700; color: #2c3e50; font-family: monospace; }
+        .parcel-item-dest { font-size: 11px; color: #888; margin-top: 2px; }
+        .parcel-item-weight { font-size: 11px; color: #aaa; }
+
+        /* DRIVER SELECTOR */
+        .driver-list { display: flex; flex-direction: column; }
+        .driver-item {
+            display: flex; align-items: center; gap: 14px;
+            padding: 14px 20px; border-bottom: 1px solid #f7f7f7;
+            cursor: pointer; transition: background 0.2s;
+        }
+        .driver-item:last-child { border-bottom: none; }
+        .driver-item:hover { background: #f9f9f9; }
+        .driver-item.selected { background: #f0fdf4; border-left: 3px solid #16a34a; }
+        .driver-item.busy { opacity: 0.5; cursor: not-allowed; }
+        .driver-avatar { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; color: white; flex-shrink: 0; }
+        .driver-info-name { font-size: 13px; font-weight: 700; color: #2c3e50; }
+        .driver-info-region { font-size: 11px; color: #888; margin-top: 2px; }
+        .driver-dot { width: 8px; height: 8px; border-radius: 50%; margin-left: auto; }
+        .dot-available { background: #16a34a; }
+        .dot-busy { background: #0891b2; }
+
+        /* ASSIGN PANEL */
+        .assign-panel { background: #f9f9f9; border: 1px solid #eee; border-radius: 14px; padding: 20px; margin: 18px; }
+        .assign-panel h4 { font-size: 14px; font-weight: 700; color: #2c3e50; margin-bottom: 16px; }
+        .assign-row { display: flex; align-items: center; gap: 12px; }
+        .assign-box { flex: 1; background: white; border: 1px solid #eee; border-radius: 10px; padding: 12px 16px; }
+        .assign-box-label { font-size: 10px; color: #aaa; font-weight: 600; text-transform: uppercase; margin-bottom: 4px; }
+        .assign-box-val { font-size: 13px; font-weight: 700; color: #2c3e50; }
+        .assign-arrow { font-size: 20px; color: #ccc; }
+        .assign-actions { display: flex; gap: 10px; margin-top: 14px; justify-content: flex-end; }
+
+        /* ACTIVE DELIVERIES TABLE */
+        table { width: 100%; border-collapse: collapse; }
+        th { text-align: left; padding: 12px 20px; font-size: 11px; color: #999; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; background: #fafafa; border-bottom: 1px solid #f0f0f0; }
+        td { padding: 13px 20px; font-size: 13px; color: #444; border-bottom: 1px solid #f7f7f7; vertical-align: middle; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: #fafafa; }
+        .btn-sm { padding: 5px 12px; border-radius: 8px; border: 1px solid #ddd; background: white; font-size: 11px; font-weight: 600; cursor: pointer; color: #555; transition: all 0.2s; }
+        .btn-sm:hover { background: #2c3e50; color: white; border-color: #2c3e50; }
+
+        /* toast */
+        .toast { position: fixed; bottom: 30px; right: 30px; background: #2c3e50; color: white; padding: 14px 20px; border-radius: 12px; font-size: 13px; font-weight: 600; box-shadow: 0 8px 24px rgba(0,0,0,0.2); display: none; align-items: center; gap: 10px; z-index: 999; }
+        .toast.show { display: flex; }
