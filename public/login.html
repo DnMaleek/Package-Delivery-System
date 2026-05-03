@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>PDSys | LogIn</title>
+</head>
+<style>
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== PAGE LAYOUT FRAME ===== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(234, 234, 234);
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* header / main / footer */
+}
+
+/* ===== HEADER ===== */
+header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 60px;
+}
+
+header p {
+    color: #fe8802;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* ===== MAIN CENTERING ===== */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+/* ===== CARD CONTAINER ===== */
+.usrform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 45px 40px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 420px;
+}
+
+/* ===== TITLE ===== */
+.usrform h2 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* ===== FORM ===== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+}
+
+/* ===== INPUTS ===== */
+input {
+    height: 48px;
+    width: 100%;
+    font-size: 15px;
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 12px;
+    padding-left: 16px;
+
+    outline-color: rgb(70, 157, 207);
+}
+
+/* ===== BUTTON ===== */
+button {
+    background-color: #fe8802;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    height: 45px;
+    border-radius: 12px;
+    border: none;
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+button:hover{
+    background-color: #000000;
+    transform: scale(1.03);
+}
+
+/* ===== FOOTER STICK TO BOTTOM ===== */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+}
+
+.followus {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 900px) {
+    header{
+        justify-content: center;
+    }
+
+    main {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+
+</style>
+<body>
+      <header>
+        <img src="logo.svg" alt="Logo" width="50" height="50">
+        <p>TRANSEND</p>
+    </header>
+
+    <main>
+    <div class="usrform">
+        <h2>Hey ! Welcome Back</h2>
+        <form id="usrform" action="">
+            <input type="text" name="" id="userId" placeholder="A-Loc-0001">
+            <input type="password" name="" id="password" placeholder="Password">
+            <button type="submit">LogIn</button>
+        </form>
+    </div>
+    </main>
+
+    <footer>
+        <p>Transend ©All rights reserved.</p>
+        <div class="followus">
+             <p>Follow Us on</p>
+                <i class="fa-brands fa-facebook-f"></i>                
+                <i class="fa-brands fa-square-instagram"></i>
+                <i class="fa-brands fa-tiktok"></i>
+
+        </div>
+    </footer>
+
+<script>
+    document.getElementById('usrform').addEventListener('submit',async (e)=>{
+        e.preventDefault();
+
+        const userId=document.getElementById("userId").value.trim();
+        const password=document.getElementById("password").value.trim();
+
+        const formdata=await fetch("/admin/dashboard",{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({userId,password})
+        });
+
+        const data = await formdata.json();
+        console.log(data);
+
+        if (data.status) {
+            window.location.href=data.url
+        } 
+    });
+    
+</script>
+
+</body>
+</html>
